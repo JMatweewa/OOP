@@ -5,143 +5,201 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    // значения по умолчанию
-    @Test
-    public void checkQuantityRadioStation() {
-        Radio radio = new Radio();
+    Radio radio = new Radio();
 
+    @Test
+    public void shouldInitQuantityRadioStation() {
         assertEquals(10, radio.getQuantityRadioStation());
     }
 
     @Test
-    public void checkCurrentRadioStation() {
-        Radio radio = new Radio();
-
+    public void shouldInitCurrentRadioStation() {
         assertEquals(0, radio.getCurrentRadioStation());
     }
 
     @Test
-    public void checkMinRadioStation() {
-        Radio radio = new Radio();
-
-        assertEquals(0, radio.getMinCurrentRadioStation());
+    public void shouldInitMinRadioStation() {
+        assertEquals(0, radio.getMinRadioStation());
     }
 
     @Test
-    public void checkMaxRadioStation() {
-        Radio radio = new Radio();
-
-        assertEquals(9, radio.getMaxCurrentRadioStation());
+    public void shouldInitMaxRadioStation() {
+        assertEquals(9, radio.getMaxRadioStation());
     }
 
     @Test
-    public void clickNextRadioStation() {
-        Radio radio = new Radio();
-
-        assertEquals(1, radio.getNextRadioStation());
-    }
-
-    @Test
-    public void clickPrevRadioStation() {
-        Radio radio = new Radio();
-
-        assertEquals(0, radio.getPrevRadioStation());
-    }
-
-    @Test
-    public void checkCurrentVolume() {
-        Radio radio = new Radio();
-
+    public void shouldInitCurrentVolume() {
         assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
-    public void checkMinCurrentVolume() {
-        Radio radio = new Radio();
-
+    public void shouldInitMinVolume() {
         assertEquals(0, radio.getMinVolume());
     }
 
     @Test
-    public void checkMaxCurrentVolume() {
-        Radio radio = new Radio();
-
+    public void shouldInitMaxVolume() {
         assertEquals(100, radio.getMaxVolume());
     }
 
     @Test
-    public void checkIncreaseVolume() {
-        Radio radio = new Radio();
+    public void shouldCurrentRadioStation() {
+        radio.setCurrentRadioStation(6);
+        assertEquals(6, radio.getCurrentRadioStation());
+    }
 
+    @Test
+    public void shouldMinCurrentRadioStation() {
+        radio.setCurrentRadioStation(0);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void shouldMaxCurrentRadioStation() {
+        radio.setCurrentRadioStation(9);
+        assertEquals(9, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void shouLessMinCurrentRadioStation() {
+        radio.setCurrentRadioStation(-1);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void shouldMoreMaxCurrentRadioStation() {
+        radio.setCurrentRadioStation(10);
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void checkNextCurrentRadioStation() {
+        radio.calculateNextRadioStation(4);
+        assertEquals(5, radio.getNextRadioStation());
+    }
+
+    @Test
+    public void checkMaxNextCurrentRadioStation() {
+        radio.setNextRadioStation(9);
+        assertEquals(0, radio.getNextRadioStation());
+    }
+
+    @Test
+    public void checkMinNextCurrentRadioStation() {
+        radio.setNextRadioStation(0);
+        assertEquals(1, radio.getNextRadioStation());
+    }
+
+    @Test
+    public void checkPrevCurrentRadioStation() {
+        radio.calculatePrevRadioStation(4);
+        assertEquals(3, radio.getPrevRadioStation());
+    }
+
+    @Test
+    public void checkMaxPrevCurrentRadioStation() {
+        radio.setPrevRadioStation(9);
+        assertEquals(8, radio.getPrevRadioStation());
+    }
+
+    @Test
+    public void checkMinPrevCurrentRadioStation() {
+        radio.setPrevRadioStation(0);
+        assertEquals(9, radio.getPrevRadioStation());
+    }
+
+    @Test
+    public void checkCurrentVolume() {
+        radio.setCurrentVolume(20);
+        assertEquals(20, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void checkMinCurrentVolume() {
+        radio.setCurrentVolume(0);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void checkMaxCurrentVolume() {
+        radio.setCurrentVolume(100);
+        assertEquals(100, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void checkLessMinCurrentVolume() {
+        radio.setCurrentVolume(-1);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void checkMoreMaxCurrentVolume() {
+        radio.setCurrentVolume(101);
+        assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void checkIncreaseVolume() {
+        radio.calculateIncreaseVolume(4);
+        assertEquals(5, radio.getIncreaseVolume());
+    }
+
+    @Test
+    public void checkMinIncreaseVolume() {
+        radio.setIncreaseVolume(0);
         assertEquals(1, radio.getIncreaseVolume());
     }
 
     @Test
-    public void checkLowVolume() {
-        Radio radio = new Radio();
+    public void checkMaxIncreaseVolume() {
+        radio.setIncreaseVolume(100);
+        assertEquals(100, radio.getIncreaseVolume());
+    }
 
+    @Test
+    public void checkLowVolume() {
+        radio.calculateLowVolume(60);
+        assertEquals(59, radio.getLowVolume());
+    }
+
+    @Test
+    public void checkMinLowVolume() {
+        radio.setLowVolume(0);
         assertEquals(0, radio.getLowVolume());
     }
 
-    //конструктор
-
     @Test
-    public void constructorQuantityRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(20, radio.getQuantityRadioStation());
+    public void checkMaxLowVolume() {
+        radio.setLowVolume(100);
+        assertEquals(99, radio.getLowVolume());
     }
 
     @Test
-    public void constructorMaxCurrentRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(19, radio.getMaxCurrentRadioStation());
+    public void checkQuantityRadioStationConstructor() {
+        Radio radio1 = new Radio(50, 49, 25, 60);
+        assertEquals(50, radio1.getQuantityRadioStation());
     }
 
     @Test
-    public void constructorCurrentRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(10, radio.getCurrentRadioStation());
+    public void checkMaxRadioStationConstructor() {
+        Radio radio1 = new Radio(50, 49, 25, 60);
+        assertEquals(49, radio1.getMaxRadioStation());
     }
 
     @Test
-    public void constructorMinCurrentRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(0, radio.getMinCurrentRadioStation());
+    public void checkCurrentRadioStationConstructor() {
+        Radio radio1 = new Radio(50, 49, 25, 60);
+        assertEquals(25, radio1.getCurrentRadioStation());
     }
 
     @Test
-    public void constructorNextRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(11, radio.getNextRadioStation());
+    public void checkVolumeConstructor() {
+        Radio radio1 = new Radio(50, 49, 25, 60);
+        assertEquals(60, radio1.getCurrentVolume());
     }
 
-    @Test
-    public void constructorPrevRadioStation() {
-        Radio radio = new Radio(20, 19, 10, 0, 11, 10);
-
-        assertEquals(10, radio.getPrevRadioStation());
-    }
-
-    @Test
-    public void constructorCurrentVolume() {
-        Radio radio = new Radio(50, 51, 50);
-        assertEquals(50, radio.getCurrentVolume());
-    }
-
-    @Test
-    public void constructorIncreaseVolume() {
-        Radio radio = new Radio(50, 51, 50);
-        assertEquals(51, radio.getIncreaseVolume());
-    }
-
-    @Test
-    public void constructorLowVolume() {
-        Radio radio = new Radio(50, 51, 50);
-        assertEquals(50, radio.getLowVolume());
-    }
 }
+
+
+
+
