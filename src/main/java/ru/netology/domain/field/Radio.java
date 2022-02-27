@@ -18,11 +18,8 @@ public class Radio {
 
     }
 
-    public Radio(int quantityRadioStation, int maxRadioStation, int currentRadioStation, int currentVolume) {
+    public Radio(int quantityRadioStation) {
         this.quantityRadioStation = quantityRadioStation;
-        this.maxRadioStation = maxRadioStation;
-        this.currentRadioStation = currentRadioStation;
-        this.currentVolume = currentVolume;
     }
 
     public int calculateMaxRadioStation(int quantityRadioStation) {

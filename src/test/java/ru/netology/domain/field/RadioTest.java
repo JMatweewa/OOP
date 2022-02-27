@@ -176,28 +176,9 @@ class RadioTest {
 
     @Test
     public void checkQuantityRadioStationConstructor() {
-        Radio radio1 = new Radio(50, 49, 25, 60);
+        Radio radio1 = new Radio(50);
         assertEquals(50, radio1.getQuantityRadioStation());
     }
-
-    @Test
-    public void checkMaxRadioStationConstructor() {
-        Radio radio1 = new Radio(50, 49, 25, 60);
-        assertEquals(49, radio1.getMaxRadioStation());
-    }
-
-    @Test
-    public void checkCurrentRadioStationConstructor() {
-        Radio radio1 = new Radio(50, 49, 25, 60);
-        assertEquals(25, radio1.getCurrentRadioStation());
-    }
-
-    @Test
-    public void checkVolumeConstructor() {
-        Radio radio1 = new Radio(50, 49, 25, 60);
-        assertEquals(60, radio1.getCurrentVolume());
-    }
-
 }
 
 
